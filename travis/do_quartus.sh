@@ -7,11 +7,12 @@
 #
 
 set -e
-
-wget ${QUARTUS_LOCATION}
+wget -q ${QUARTUS_LOCATION}
 mv quartus* quartus_14.0.tar.gz
 tar -zxf quartus_14.0.tar.gz
-cd syn && PATH=$PWD/../altera/14.0/quartus/bin:$PATH make &
+cd syn
+
+PATH=$PWD/../altera/14.0/quartus/bin:$PATH make &
 pid=$!
 
 # Long periods with no output so have to force occasional activity
