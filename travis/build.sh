@@ -1,9 +1,10 @@
 #!/bin/bash
 set -ev
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Synthesis build
 if [ "${QUARTUS_SYNTHESIS}" = "true" ]; then
-    ./buildtools/travis/do_quartus.sh
+    ${DIR}/do_quartus.sh
 fi
 
 # Simulation build
