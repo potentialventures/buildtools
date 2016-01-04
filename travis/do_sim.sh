@@ -21,5 +21,7 @@ fi
 
 # Generate HMAC digest and post the results back to The Open Corps
 MSG_DIGEST=`openssl dgst -hex -sha1 -hmac $MSG_TOKEN results.xml | awk '{print $2}'`
-curl -H "X-Core-Signature: ${MSG_DIGEST}" -H "Content-Type:application/xml" --data-binary @results.xml https://theopencorps.potential.ventures/${REPOSITORY}/simulation/results
+
+# NB Let's Encrypt CA isn't in the curl bundle on Trusty
+curl -k -H "X-Core-Signature: ${MSG_DIGEST}" -H "Content-Type:application/xml" --data-binary @results.xml https://theopencorps.potential.ventures/${REPOSITORY}/simulation/results
 
