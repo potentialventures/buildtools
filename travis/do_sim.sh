@@ -23,5 +23,5 @@ fi
 MSG_DIGEST=`openssl dgst -hex -sha1 -hmac $MSG_TOKEN results.xml | awk '{print $2}'`
 
 # NB Let's Encrypt CA isn't in the curl bundle on Trusty
-curl -k -H "X-Core-Signature: ${MSG_DIGEST}" -H "Content-Type:application/xml" --data-binary @results.xml https://theopencorps.potential.ventures/${REPOSITORY}/simulation/results
+curl -k -H "X-Core-Signature: ${MSG_DIGEST}" -H "Content-Type:application/xml" -H "Travis-Commit:${TRAVIS_COMMIT}" -H "Travis-JobID:${TRAVIS_JOB_ID}" -H "Travis-BuildID:${TRAVIS_BUILD_ID}" --data-binary @results.xml https://theopencorps.potential.ventures/${REPOSITORY}/simulation/results
 
