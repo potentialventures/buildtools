@@ -12,7 +12,7 @@ export PATH=`pwd`/sim/bin:$PATH
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 if [ "${VUNIT_FUSESOC_SIMULATION}" = "true" ]; then
-    ${DIR}/../funit/funit.py -x results.xml
+    ${DIR}/../funit/funit.py -x results.xml --exit-0
 fi
 
 if [ "${COCOTB_SIMULATION}" = "true" ]; then
