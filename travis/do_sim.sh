@@ -6,7 +6,7 @@
 #
 
 set -e
-wget -O sim.tar.gz ${SIM_LOCATION}
+wget --quiet -O sim.tar.gz ${SIM_LOCATION}
 tar -zxf sim.tar.gz
 export PATH=`pwd`/sim/bin:$PATH
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
