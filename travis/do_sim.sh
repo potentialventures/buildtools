@@ -17,16 +17,16 @@ fi
 
 if [ "${VUNIT_SIMULATION}" = "true" ]; then
     for vunit_script in ${VUNIT_SCRIPTFILES}; do
-        cd `dirname $vunit_script` && $vunit_script -x results.xml --exit-0 | tee -a ~/simulation.log
+        cd ${TRAVIS_BUILD_DIR}/`dirname $vunit_script` && $vunit_script -x results.xml --exit-0 | tee -a ${TRAVIS_BUILD_DIR}/simulation.log
     done
 fi
 
 
 if [ "${COCOTB_SIMULATION}" = "true" ]; then
-    make
+    cd ${TRAVIS_BUILD_DIR} && make
 fi
 
-cd
+cd ${TRAVIS_BUILD_DIR}
 ${DIR}/../junit/combine.py combined_results.xml
 
 # Generate HMAC digest and post the results back to The Open Corps
