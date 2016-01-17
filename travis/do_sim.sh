@@ -17,7 +17,7 @@ fi
 
 if [ "${VUNIT_SIMULATION}" = "true" ]; then
     for vunit_script in ${VUNIT_SCRIPTFILES}; do
-        cd ${TRAVIS_BUILD_DIR}/`dirname $vunit_script` && ./`basename $vunit_script` -x results.xml --exit-0 | tee -a ${TRAVIS_BUILD_DIR}/simulation.log
+        cd ${TRAVIS_BUILD_DIR}/`dirname $vunit_script` && python ./`basename $vunit_script` -x results.xml --exit-0 | tee -a ${TRAVIS_BUILD_DIR}/simulation.log
     done
 fi
 
